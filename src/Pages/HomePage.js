@@ -1,3 +1,4 @@
+import AllCountriesList from "components/AllCountriesList ";
 import { Grid, GridContainer } from "components/Grid";
 import WorldSummary from "components/WorldSummary";
 import React from "react";
@@ -12,6 +13,11 @@ const HomePage = () => {
           <WorldSummary />
         </GridContainer>
       </Grid>
+      <Grid>
+        <GridContainer className="homepage-content">
+          <AllCountriesList />
+        </GridContainer>
+      </Grid>
     </StyledHomePage>
   );
 };
@@ -24,9 +30,9 @@ const StyledHomePage = styled.section`
 
   .homepage-content {
     height: 100%;
-    justify-content: center;
+    /* justify-content: center; */
     ${media.phablet`
-    margin-top: 5rem;
+      margin-top: 5rem;
     `}
   }
 `;

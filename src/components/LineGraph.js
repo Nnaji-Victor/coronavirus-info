@@ -1,17 +1,11 @@
 import React from "react";
-// import { useD3 } from "_utils/useD3";
 import * as d3 from "d3";
 import useResizeObserver from "_utils/useResizeObserver";
 
-const key = ["cases"];
-const color = {
-  cases: "#ca6c87",
-};
 const LineGraph = ({ data }) => {
   const svgRef = React.useRef();
   const wrapperRef = React.useRef();
   const dimensions = useResizeObserver(wrapperRef);
-  //   d3.select(svgRef.current).remove()
 
   React.useEffect(() => {
     const svg = d3.select(svgRef.current);

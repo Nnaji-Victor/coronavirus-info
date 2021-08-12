@@ -24,8 +24,13 @@ CoronaTrackr is a demo built for the VoyanceHQ test. It involves consuming the "
  - [x] active cases
  - [x] daily cases map
 
+
+![coronatrackr screenshot](countries.png)
+
 ### TODO
 
  - [ ] monthly picker for map
  - [ ] map update
  - [ ] Recovered, Active and Deaths map
+
+ ![coronatrackr screenshot](map.png)

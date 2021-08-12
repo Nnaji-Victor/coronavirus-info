@@ -26,6 +26,7 @@ const StyledHomePage = styled.section`
   background: var(--secondary-color);
   height: 65rem;
   min-height: 65rem;
+  ${media.phablet`height: 95rem;`}
   color: var(--text-color);
 
   .homepage-content {

@@ -1,6 +1,7 @@
 import React from "react";
 import { useQueryClient } from "react-query";
 import styled from "styled-components";
+import media from "styles/media";
 import { useCountries, useRefetchCountries } from "_utils/query-hooks";
 import AllCountriesContainer from "./AllCountriesContainer";
 import Heading from "./Heading";
@@ -40,6 +41,7 @@ const AllCountriesList = () => {
 
 const StyledCountriesList = styled.section`
   margin-top: 10rem;
+  ${media.phablet`margin-top: 5rem`}
   .countries-container {
     margin-top: 3.5rem;
   }

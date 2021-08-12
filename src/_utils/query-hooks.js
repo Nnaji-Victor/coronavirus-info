@@ -33,26 +33,62 @@ const getcountriesConfig = (client, queryCache) => ({
 });
 
 const loadingCountry = {
-  "Country": "loading...",
-  "Slug": "loading...",
-  "ISO2": "loading...,"
+  Country: "loading...",
+  Slug: "loading...",
+  ISO2: "loading...,",
+  CountryCode: "loading..",
 };
+
+const loadingCountries = Array.from({ length: 10 }, (v, index) => ({
+  id: `loading-book-${index}`,
+  ...loadingCountry,
+}));
 
 function useCountries() {
   const queryCache = useQueryClient();
   const client = useClient();
   const result = useQuery(getcountriesConfig(client, queryCache));
 
-  return { ...result, countries: result.data ? result.data : loadingCountry };
+  return { ...result, countries: result.data ? result.data : loadingCountries };
 }
 
-const useRefetchCountries = () =>{
+const useRefetchCountries = () => {
   const client = useClient();
-  return React.useCallback(async function refetchBookSearchQuery(queryCache){
-    queryCache.removeQueries('countries');
-    await queryCache.prefetchQuery(getcountriesConfig(client, queryCache))
-  
-  },[client])
-}
+  return React.useCallback(
+    async function refetchBookSearchQuery(queryCache) {
+      queryCache.removeQueries("countries");
+      await queryCache.prefetchQuery(getcountriesConfig(client, queryCache));
+    },
+    [client]
+  );
+};
 
-export { useAllWorldSummary, useWorldSummary, useCountries, useRefetchCountries };
+const useCountryDetails = (countryId, start, end) => {
+  const client = useClient();
+  const result = useQuery({
+    queryKey: ["country", { countryId }],
+    queryFn: () => client(`total/country/${countryId}?from=${start}&to=${end}`).then((data) => data),
+  });
+
+  // console.log(`total/country/${countryId}?from=${start}&to=${end}`);
+  return { ...result, country: result.data ?? loadingCountry };
+};
+
+const useCountry = (countryId) => {
+  const client = useClient();
+  const result = useQuery({
+    queryKey: ["country", { countryId }],
+    queryFn: () => client(`country/${countryId}`).then((data) => data),
+  });
+
+  return { ...result, country: result.data ?? loadingCountries };
+};
+
+export {
+  useAllWorldSummary,
+  useWorldSummary,
+  useCountry,
+  useCountries,
+  useRefetchCountries,
+  useCountryDetails,
+};

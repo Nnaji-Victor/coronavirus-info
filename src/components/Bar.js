@@ -7,13 +7,10 @@ import {
   max,
   scaleLinear,
   axisLeft,
-  stackOrderAscending,
 } from "d3";
-import { useD3 } from "_utils/useD3";
+
 import useResizeObserver from "_utils/useResizeObserver";
 import styled from "styled-components";
-
-function BarChart({ data }) {}
 
 function StackedBarChart({ data, keys, colors }) {
   const svgRef = React.useRef();
@@ -125,4 +122,4 @@ const StyledBarChart = styled.div`
     }
 `;
 
-export { BarChart, StackedBarChart };
+export { StackedBarChart };

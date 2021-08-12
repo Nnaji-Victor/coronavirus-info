@@ -15,7 +15,7 @@ const AllCountriesContainer = ({ countries }) => {
 
 const Country = ({ country }) => {
   return (
-    <StyledLink to={`country/${country.Slug}`}>
+    <StyledLink to={`country/${country.Slug}-${country.ISO2}`}>
       <div className="country-image">
         <img
           src={`https://www.countryflags.io/${country.ISO2}/flat/64.png`}

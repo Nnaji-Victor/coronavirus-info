@@ -2,7 +2,7 @@
 
 # CoronaTrackr
 
-CoronaTrackr is a demo built for the VoyanceHQ test. It involves consuming the "COVID19 API" and displaying them in a neat layout for user consumption. 
+It involves consuming the "COVID19 API" and displaying them in a neat layout for user consumption. 
 
 ![coronatrackr screenshot](screenshot.png)
 
